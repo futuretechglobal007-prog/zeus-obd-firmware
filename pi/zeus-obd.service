@@ -1,0 +1,14 @@
+[Unit]
+Description=ZEUS OBD/GNSS edge sender
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+EnvironmentFile=/etc/zeus-obd.env
+ExecStart=/opt/zeus-obd/venv/bin/python /opt/zeus-obd/zeus_obd.py
+Restart=always
+RestartSec=5
+StateDirectory=zeus-obd
+
+[Install]
+WantedBy=multi-user.target
